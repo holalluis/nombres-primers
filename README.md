@@ -16,3 +16,5 @@ Per exemple:
   <tr><th>9  <td>0 <td>2 <td>0 <td>0 <td>9  = 3<sup>2</sup>
   <tr><th>10 <td>1 <td>0 <td>1 <td>0 <td>10 = 2<sup>1</sup>·5<sup>1</sup>
 </table>
+
+Veure http://lluis.ovh/nombres-primers per veure una taula fins a N=300
