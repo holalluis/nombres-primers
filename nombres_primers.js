@@ -5,22 +5,22 @@ function es_primer(n,nombres_primers){
   if(n<4)   return true; //2 i 3 són primers
   if(n%2==0)return false;//nombres parells no
   //si n es pot dividir per algun dels nombres primers que ja hem trobat: no és primer
-  for(var i=0;i<nombres_primers.length;i++){
-    if(n%nombres_primers[i]==0)return false;
+  for(let i=0;i<nombres_primers.length;i++){
+    if(n%nombres_primers[i]==0) return false;
   };
   //si supera el bucle és primer
   return true;
 }
 
-//calcula els primers nombres primers menors que 'limit'
+//calcula els nombres primers menors que 'limit'
 function llista(limit){
   if(!limit)return false;
 
-  //array on guardem els nombres primers que trobem
-  var nombres_primers=[];
+  //nombres primers que anem trobant
+  let nombres_primers=[2,3,5,7];
 
-  //bucle fins a 'limit'
-  for(var i=0;i<=limit;i++){
+  //comprova si els nombres son primers fins a 'limit'
+  for(let i=9;i<=limit;i+=2){
     if(es_primer(i,nombres_primers)){
       nombres_primers.push(i);
     }
@@ -29,20 +29,20 @@ function llista(limit){
   return nombres_primers;
   /*
     test
-    var llista_limit = llista(50);
+    let llista_limit = llista(50);
     console.log(llista_limit);
   */
 }
 
 //expressa el nombre n com un "array d'exponents de nombres primers"
 function tradueix(n){
-  var traduccio=[]; //tindrà tants elements com nombres_primers més petits que ell
-  var nombres_primers=llista(n);
+  let traduccio=[]; //tindrà tants elements com nombres_primers més petits que ell
+  let nombres_primers=llista(n);
 
-  var acumulat=1; //construeix n a partir de p
+  let acumulat=1; //construeix n a partir de p
   nombres_primers.forEach(p=>{
-    var vegades=0;  //vegades que p pot dividir n
-    var n_copia=n;  //copia n per anar-lo dividint
+    let vegades=0;  //vegades que p pot dividir n
+    let n_copia=n;  //copia n per anar-lo dividint
     while(n_copia%p==0){
       n_copia/=p;
       vegades++;
@@ -56,18 +56,19 @@ function tradueix(n){
 
   return traduccio;
   /*
-    var limit=40;
+    let limit=40;
     console.log(limit,llista(limit));
-    for(var i=2;i<limit;i++){
-      var tra=tradueix(i);
+    for(let i=2;i<limit;i++){
+      let tra=tradueix(i);
       console.log(i,tra);
     }
   */
 }
 
+//calcula quants divisors té un número
 function divisors(n){
-  var score=0;
-  for(var i=0;i<=n;i++){
+  let score=0;
+  for(let i=0;i<=n;i++){
     if(n%i==0)
       score++;
   }

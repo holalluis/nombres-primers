@@ -27,14 +27,16 @@
 
 <script>
   (function(){
-    var n=2;   //inici
-    var m=300; //final
+    let n=2;   //inici
+    let m=300; //final
     document.querySelector('#limit').innerHTML=m;
 
     //taula
-    var t=document.querySelector('table#taula');
-    var newRow=t.insertRow(-1);
-    var nombres_primers=llista(m);
+    let t=document.querySelector('table#taula');
+    let newRow=t.insertRow(-1);
+
+    //llista tots els nombres primers menors que m
+    let nombres_primers=llista(m);
 
     //headers
     newRow.insertCell(-1);
@@ -43,17 +45,17 @@
     });
 
     //score: number of divisors of number i
-    var composability=[];
-    var max_score=0;
+    let composability=[];
+    let max_score=0;
 
     //content
-    for(var i=n;i<=m;i++){
+    for(let i=n;i<=m;i++){
       //tradueix el nombre i
-      var tra=tradueix(i);
+      let tra=tradueix(i);
 
       //expressa "i" com a producte de primers
-      var producte=(function(){
-        var primers=[];
+      let producte=(function(){
+        let primers=[];
         tra.forEach((f,k)=>{
           if(f){
             primers.push(nombres_primers[k]+(f==1?"":"<sup>"+f+"</sup>"));
@@ -63,11 +65,11 @@
       })();
 
       //nova fila
-      var newRow=t.insertRow(-1);
+      let newRow=t.insertRow(-1);
       newRow.setAttribute('caption',producte);
 
       //color de fons fila
-      var background=nombres_primers.indexOf(i)+1 ? "lightgreen":"";
+      let background=nombres_primers.indexOf(i)+1 ? "lightgreen":"";
       newRow.style.background=background;
 
       //primera cel·la
@@ -75,13 +77,13 @@
 
       //exponents dels nombres primers
       tra.forEach(f=>{
-        var color=f?"":"style=color:#ccc";
+        let color=f?"":"style=color:#ccc";
         newRow.insertCell(-1).outerHTML='<td '+color+'>'+f;
       });
 
       //score: divisors
       /*
-      var score=divisors(i);
+      let score=divisors(i);
       if(score>max_score){
         max_score=score;
         composability.push({num:i,score});
